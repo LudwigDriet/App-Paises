@@ -1,0 +1,28 @@
+.pais_contenedor{
+    /* background-color: rebeccapurple; */
+    margin-left: 20px ;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 320px;
+    height: 300px;
+    border-radius: 10px;
+    
+  
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.pais_bandera{
+  
+  display: flex;
+  justify-content: center;
+
+}
+
+.link{
+text-decoration: none;
+color: black;
+}

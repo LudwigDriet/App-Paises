@@ -1,0 +1,18 @@
+.formulario_contenedor{
+    justify-content:space-evenly;
+    display: flex;
+    padding: 20px;
+    flex-direction:column;
+    margin-top: 10px;
+    width: 520px;
+    min-height: 300px;
+    border-radius: 10px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.formulario_caja{
+
+    display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}

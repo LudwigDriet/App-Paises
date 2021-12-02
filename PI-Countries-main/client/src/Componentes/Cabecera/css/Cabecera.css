@@ -1,0 +1,29 @@
+.cabecera_contenedor {
+
+    /* background-color: brown; */
+    margin-left: 20px ;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 10px ;
+    margin-bottom: 15px;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.cabecera_sub_contenedor{
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    
+}
+.filtros_contenedor{
+    /* background-color: gold; */
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    
+}
+select{
+    cursor:pointer
+}

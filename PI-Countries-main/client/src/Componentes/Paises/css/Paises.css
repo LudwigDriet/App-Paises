@@ -1,0 +1,11 @@
+.paises_contenedor{
+    
+    margin-left: 20px ;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 75vh;
+    margin-top: 10px;
+    flex-wrap: wrap-reverse;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
