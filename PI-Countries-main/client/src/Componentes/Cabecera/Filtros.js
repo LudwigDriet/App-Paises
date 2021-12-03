@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect} from "react";
 import { HelpGetPaises } from "../../helpers/HelpGetPaises";
+import { Link } from "react-router-dom";
 
 export const Filtros = (props) => {
 
-    let {setPaises,paises}= props;
+    let {setPaises,copiapaises}= props;
 
 
   let [alfa,setalfa]=useState('')
@@ -42,7 +43,9 @@ export const Filtros = (props) => {
 
      HelpGetPaises('http://localhost:3001/actividades').then(res => settraerActividad(res.data))
 
+     if(data !==''){
      HelpGetPaises('http://localhost:3001/data').then(res => setdata(res.data))
+     }
 
      if(actividad !==''){
       //  paises.filter(pais=>pais.id===traerActividad.indexOf(pais.id))
@@ -50,47 +53,24 @@ export const Filtros = (props) => {
       return a.actividadId.toString() === actividad
       })
         let atr=[];
-      for (let i = 0; i < paises.length; i++) {
+      for (let i = 0; i < copiapaises.length; i++) {
         for (let j = 0; j < traerac.length; j++) {
           
-          if(paises[i].cca3 === traerac[j].countryCca3){
-            atr.push(paises[i])
+          if(copiapaises[i].cca3 === traerac[j].countryCca3){
+            atr.push(copiapaises[i])
           }
           
         }
       }
 
-      // let pa = paises.filter(p=>{
-      //  return traerac.filter(a=>{
-      //    return p.cca3 ===  a.countryCca3
-      //   })
-      // })
-      // traerac[0](p=>{
-        
-      //   setPaises(p.countryCca3 === paises.cca3)
-      // })
-      console.log(atr)
-      console.log(traerac)
+      
       setPaises(atr)
+
      }
+
+     setactividad('')
      
-    //  {
-    //   let actividadFiltrada
-    //   let act = paises.map(pais=>{
-
-    //     pais.actividads.id === actividad
-
-    //     if(pais?.actividads?.length>0){
-          
-    //      actividadFiltrada = pais.actividads.filter( a => a.id === actividad )
-    //     }
-          
-    //     return actividadFiltrada
-    //  }
-    //  )
-
-    //  console.log(act)
-    //  }
+  
 
     },[alfa,poblacion,continente,actividad])
 
@@ -133,6 +113,10 @@ export const Filtros = (props) => {
          
         </select>
       </div>
+      
+        <Link to={'/actividad'}> <button>Crear Actividad</button>   </Link>
+        
+      
     </div>
   );
 };
