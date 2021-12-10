@@ -6,7 +6,7 @@ const initialState = {
     msg: "",
     data: {},
     error: null,
-    totalResults: 0
+    
   }
 
 export const paisesReducer = (state = initialState, action) => {
@@ -19,6 +19,7 @@ export const paisesReducer = (state = initialState, action) => {
         }
   
       case "GET_PAISES_FULFILLED":
+        
         return {
           ...state,
           fetching: false,
@@ -36,6 +37,24 @@ export const paisesReducer = (state = initialState, action) => {
           error: action.payload,
          
         }
+        case "GET_PAISES_FILTRADOS":
+          return {
+            ...state,
+            fetching: false,
+            fetched: true,
+            msg: "Petición exitosaaaaaaa",
+            data: action.payload
+          }
+          
+          case "PAISES_RESET":
+          return {
+            ...state,
+            fetching: false,
+            fetched: false,
+            msg: "",
+            data: {},
+            error: null,
+          }
       
       default: 
       return state

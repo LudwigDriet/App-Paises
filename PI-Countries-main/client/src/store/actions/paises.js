@@ -1,14 +1,22 @@
 import { HelpGetPaises } from "../../helpers/HelpGetPaises";
 
-export const getPaises = () => {
+export const getPaisesFiltrados = (data)=>{
 
-  return (dispatch) => {
+  return (dispatch)=>{
+    dispatch(agregarFiltrado(data))
+  }
+
+}
+
+export const getPaises = (URL) => {
+
+  return(dispatch) => {
     //actualizar estado a pendiente
     dispatch(getPaisesPending());
 
     
     //peticion
-    return HelpGetPaises('http://localhost:3001/countries')
+    return HelpGetPaises(URL)
     .then(res => dispatch(getPaisesFulfilled({
       post: res.data 
       
@@ -17,22 +25,59 @@ export const getPaises = () => {
   }
 }
 
-export const getPaisesPending = () => {
+// export const getPaises =  (URL) =>{
+  
+//   return async(dispatch) => {
+//     dispatch(getPaisesPending());
+
+//     let t = await HelpGetPaises(URL)
+//     console.log('esto es t',t)
+//     return dispatch({
+      
+//       payload:getPaisesFulfilled(t.data),
+      
+      
+//     })
+   
+//   }
+
+// }
+
+const agregarFiltrado = (data) =>{
+ 
+  return {
+    
+    payload: data,
+    type: "GET_PAISES_FILTRADOS"
+  }
+}
+
+const getPaisesPending = () => {
   return {
     type: "GET_PAISES_PENDING",
   }
 }
 
-export const getPaisesFulfilled = (paises) => {
+const getPaisesFulfilled = (paises) => {
+  console.log('paises',paises)
   return {
     payload: paises,
     type: "GET_PAISES_FULFILLED",
   }
 }
 
-export const getPaisesRejected = (error) => {
+const getPaisesRejected = (error) => {
   return {
     payload: error,
     type: "GET_PAISES_REJECTED",
   }
+}
+
+export const resetearPaises = () =>{
+
+  return {
+    payload: {},
+    type: "PAISES_RESET",
+  }
+
 }

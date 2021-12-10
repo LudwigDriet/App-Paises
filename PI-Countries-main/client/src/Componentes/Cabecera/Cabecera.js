@@ -6,15 +6,13 @@ import './css/Cabecera.css'
 
 
 export const Cabecera = (props) => {
+  let {setpaginaActual}= props
 
-  let  {setPaises,paises,copiapaises} = props
- 
-
-    return (
+   return (
          <div className='cabecera_contenedor'>
            <div className='cabecera_sub_contenedor' > 
-               <Buscador setbuscarPais={props.setbuscarPais}/>
-                <Filtros setPaises={setPaises} paises={paises} copiapaises={copiapaises}/>
+               <Buscador />
+                <Filtros setpaginaActual={setpaginaActual}/>
              </div>
          </div>
        

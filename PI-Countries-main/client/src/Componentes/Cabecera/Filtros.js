@@ -2,11 +2,25 @@ import React from "react";
 import { useState, useEffect} from "react";
 import { HelpGetPaises } from "../../helpers/HelpGetPaises";
 import { Link } from "react-router-dom";
+import {useDispatch,useSelector } from "react-redux";
+import {getPaisesFiltrados} from "../../store/actions/paises";
+// import { paisesReducer } from "../../store/reducers/paisesReducer";
+import { getPaises } from "../../store/actions/paises";
 
 export const Filtros = (props) => {
+    let {setpaginaActual} = props
+    
+    let paisesReducer = useSelector(state => state.paisesReducer)
+    const dispatch = useDispatch()
+    let URL = 'http://localhost:3001/countries';
 
-    let {setPaises,copiapaises}= props;
-
+    function handleClick(e) {
+      e.preventDefault();
+      dispatch(getPaises(URL));
+      setpaginaActual(0);
+          }
+      
+         
 
   let [alfa,setalfa]=useState('')
 
@@ -18,75 +32,114 @@ export const Filtros = (props) => {
 
   let [traerActividad,settraerActividad]=useState([])
 
-  let [data,setdata]=useState([])
+  let [actividadPorPais,setactividadPorPais]=useState([])
 
-  useEffect(()=>{
+  let [copiapaises,setcopiaPaises] = useState([]);
+
+  let [crearCopiaPais,setcrearCopiaPais] = useState(true);
+
+  let[selectEstado,setselectEstado]=useState('DEFAULT')
+
+  
+  if(crearCopiaPais&&paisesReducer.fetched){
+
+    
+    setcopiaPaises(paisesReducer.data)
+    setcrearCopiaPais(false)
+  }
+
+  
+
+useEffect(()=>{
 
     if(alfa !==""){
       alfa === "A-Z" 
-      ? HelpGetPaises('http://localhost:3001/az').then(res => setPaises(res.data)) 
-      : HelpGetPaises('http://localhost:3001/za').then(res => setPaises(res.data))
+      ? HelpGetPaises('http://localhost:3001/az').then(res =>{
+        
+        dispatch(getPaisesFiltrados(res.data))
+      } ) 
+      : HelpGetPaises('http://localhost:3001/za').then(res =>{
+        
+        dispatch(getPaisesFiltrados(res.data))
+      } )
      }
      setalfa('')
 
      if(poblacion !==""){
       poblacion === "Menor" 
-      ? HelpGetPaises('http://localhost:3001/poblacionmenos').then(res => setPaises(res.data)) 
-      : HelpGetPaises('http://localhost:3001/poblacionmas').then(res => setPaises(res.data))
+      ? HelpGetPaises('http://localhost:3001/poblacionmenos').then(res =>{
+        
+        dispatch(getPaisesFiltrados(res.data))
+        }) 
+      : HelpGetPaises('http://localhost:3001/poblacionmas').then(res =>{
+        
+        dispatch(getPaisesFiltrados(res.data))
+        
+      } )
      }
      setpoblacion('')
 
      if(continente !==""){
-      HelpGetPaises(`http://localhost:3001/continente/${continente}`).then(res => setPaises(res.data))
+      HelpGetPaises(`http://localhost:3001/continente/${continente}`).then(res =>{
+       
+        dispatch(getPaisesFiltrados(res.data))
+      })
+      
      }
      setcontinente('')
 
-     HelpGetPaises('http://localhost:3001/actividades').then(res => settraerActividad(res.data))
+     HelpGetPaises('http://localhost:3001/actividades').then(res =>{
+       settraerActividad(res.data)
+      
 
-     if(data !==''){
-     HelpGetPaises('http://localhost:3001/data').then(res => setdata(res.data))
-     }
-
-     if(actividad !==''){
-      //  paises.filter(pais=>pais.id===traerActividad.indexOf(pais.id))
-     let traerac =  data.filter(a =>{
-      return a.actividadId.toString() === actividad
+     })
+     if(actividadPorPais !==''){
+       HelpGetPaises('http://localhost:3001/actividadPorPais').then(res => setactividadPorPais(res.data))
+      }
+      
+      if(actividad !==''){
+        
+     let actividadEncontrada =  actividadPorPais.filter(a =>{
+       return a.actividadId.toString() === actividad
       })
-        let atr=[];
+      
+      
+        let paisesParaMostrar=[];
+        
       for (let i = 0; i < copiapaises.length; i++) {
-        for (let j = 0; j < traerac.length; j++) {
+        for (let j = 0; j < actividadEncontrada.length; j++) {
           
-          if(copiapaises[i].cca3 === traerac[j].countryCca3){
-            atr.push(copiapaises[i])
+          if(copiapaises[i].cca3 === actividadEncontrada[j].countryCca3){
+            paisesParaMostrar.push(copiapaises[i])
           }
           
         }
       }
-
       
-      setPaises(atr)
-
+       dispatch(getPaisesFiltrados(paisesParaMostrar))
+      
      }
 
      setactividad('')
      
-  
+    setselectEstado('DEFAULT')
 
-    },[alfa,poblacion,continente,actividad])
+    },[alfa,poblacion,continente,actividad,selectEstado])
+
 
   return (
     <div className = 'filtros_contenedor'>
       <div>
-        <select name="Ordenar" id="orden" onChange={(evento)=>setalfa(evento.target.value)} >
-          <option disabled selected={true}>Ordenar Alfabeticamente</option>
+        <select value={selectEstado} className='select_filtro' name="Ordenar" id="orden" onChange={(evento)=>setalfa(evento.target.value)} >
+          <option value={selectEstado} disabled >Ordenar Alfabeticamente</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
          
         </select>
       </div>
       <div>
-        <select name="Continente" id="continente" onChange={(evento)=>setcontinente(evento.target.value)}>
-          <option disabled selected={true}>Ordenar por Continente</option>
+        <select value={selectEstado} className='select_filtro' name="Continente" id="continente" onChange={(evento)=>setcontinente(evento.target.value)}>
+          <option value={selectEstado} disabled>Ordenar por Continente</option>
           <option value="Africa">Africa</option>
           <option value="Asia">Asia</option>
           <option value="Americas">America</option>
@@ -96,8 +149,8 @@ export const Filtros = (props) => {
         </select>
       </div>
       <div>
-        <select name="Actividad" id="actividad" onChange={(evento)=>setactividad(evento.target.value)}>
-          <option disabled selected={true}>Ordenar por Actividad</option>
+        <select value={selectEstado} className='select_filtro' name="Actividad" id="actividad" onChange={(evento)=>setactividad(evento.target.value)}>
+          <option value={selectEstado} >Ordenar por Actividad</option>
           {traerActividad.map(actividad=>(
             
             <option key={actividad.id} value={actividad.id}>{actividad.nombre}</option>
@@ -106,17 +159,22 @@ export const Filtros = (props) => {
         </select>
       </div>
       <div>
-        <select name="Poblacion" id="poblacion" onChange={(evento)=>setpoblacion(evento.target.value)}>
-          <option disabled selected={true}>Ordenar por Poblacion</option>
+        <select value={selectEstado} className='select_filtro' name="Poblacion" id="poblacion" onChange={(evento)=>setpoblacion(evento.target.value)}>
+          <option value={selectEstado} disabled >Ordenar por Poblacion</option>
           <option value="Mayor">Mayor Poblacion</option>
           <option value="Menor">Menor Poblacion</option>
          
         </select>
       </div>
-      
-        <Link to={'/actividad'}> <button>Crear Actividad</button>   </Link>
-        
-      
-    </div>
+        <Link to={'/actividad'}> <button className='boton_crear'>Crear Actividad</button>   </Link>
+        <button className='boton_crear'
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Recargar Paises
+</button>
+      </div>
+
   );
 };

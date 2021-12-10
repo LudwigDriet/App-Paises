@@ -1,24 +1,42 @@
-import React from 'react';
-import {useState} from 'react';
-export const Buscador = (props) => {
-    let {setbuscarPais} = props;
+import React from "react";
+import { useState, useEffect } from "react";
+import "./css/Cabecera.css";
+import { useDispatch } from "react-redux";
+import { getPaisesFiltrados, getPaises } from "../../store/actions/paises";
+import { HelpGetPaises } from "../../helpers/HelpGetPaises";
 
-    let [teclearPais,setteclearPais] = useState('');
 
+export const Buscador = () => {
+  
+  const dispatch = useDispatch();
+    
+ 
+  let [buscarPais, setbuscarPais] = useState("");
 
-    let cambios = (event)=>{
-
-        setteclearPais(event.target.value)
-        setbuscarPais(event.target.value)
-
+  
+  let URL = "http://localhost:3001/countries";
+  useEffect(() => {
+    if (buscarPais !== "") {
+      HelpGetPaises(`http://localhost:3001/countries?name=${buscarPais}`)
+        .then((res) => dispatch(getPaisesFiltrados(res.data)))
+        .catch(() => alert('Pais no encontrado'));
+    } else {
+      dispatch(getPaises(URL));
     }
+  }, [buscarPais, URL, dispatch]);
 
-    return (
-         <div>                                                                                     
-             <input type='text' placeholder='Pais' value={teclearPais} onChange={(event)=>cambios(event)}/>
+  let cambios = (event) => {
+    setbuscarPais(event.target.value);
+  };
 
-         </div>
-    )
-
-}
-
+  return (
+    <div>
+      <input
+        className="clase_buscador"
+        type="text"
+        placeholder="Pais"
+        onChange={(event) => cambios(event)}
+      />
+    </div>
+  );
+};

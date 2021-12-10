@@ -6,6 +6,34 @@
     justify-content: center;
     min-height: 75vh;
     margin-top: 10px;
-    flex-wrap: wrap-reverse;
+    flex-wrap:wrap ;
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
+.botones_paginado{
+    
+    display: flex;
+    margin: 1%;
+    padding: 10px;
+    justify-content: center;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    
+    border: 1px solid rgb(222, 226, 230);
+}
+
+
+.boton_boton{
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid rgb(222, 226, 230);
+    transition: 0.5s;
+    
+}
+
+.boton_boton:hover{
+    cursor:pointer;
+    border: 1px solid rgb(113, 120, 128);
+
+}
+
+

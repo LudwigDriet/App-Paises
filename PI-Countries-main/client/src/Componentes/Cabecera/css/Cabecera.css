@@ -1,6 +1,6 @@
 .cabecera_contenedor {
 
-    /* background-color: brown; */
+    
     margin-left: 20px ;
     margin-right: 20px;
     display: flex;
@@ -11,19 +11,45 @@
 }
 
 .cabecera_sub_contenedor{
-    /* background-color: burlywood; */
+    
     display: flex;
     justify-content: space-around;
     width: 90%;
     
 }
 .filtros_contenedor{
-    /* background-color: gold; */
+   
     display: flex;
     justify-content: space-around;
     width: 80%;
     
 }
-select{
-    cursor:pointer
+.select_filtro{
+    cursor:pointer;
+    padding: 10px;
+    
 }
+
+.boton_crear{
+    padding: 10px;
+    
+    border: 1px solid rgb(222, 226, 230);
+    transition: 0.5s;
+    
+}
+
+.boton_crear:hover{
+    cursor:pointer;
+    border: 1px solid rgb(113, 120, 128);
+
+}
+.clase_buscador{
+    padding: 10px;
+
+}
+
+.clase_buscador:focus{
+    
+    border-radius: 5px;
+}
+

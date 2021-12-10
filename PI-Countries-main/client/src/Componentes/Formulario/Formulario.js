@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
 import './css/Formulario.css'
-//import { useParams } from "react-router-dom";
 import { HelpPostActividad } from '../../helpers/HelpPostActividad';
 import { HelpGetPaises } from '../../helpers/HelpGetPaises';
 export const Formulario = ()=>{
@@ -21,6 +20,8 @@ export const Formulario = ()=>{
         paisSeleccionado:[]
     })
 
+    
+
     useEffect(() => {
    
         if(teclearPais.pais !== ''){
@@ -29,9 +30,10 @@ export const Formulario = ()=>{
               ...buscarPais,
               paisEncontrado: res.data
           }))
+          
         }
         
-    },[teclearPais.pais])
+    },[teclearPais.pais,buscarPais])
 
     
     let [actividadEnviada,setActividadEnviada]=useState('')
@@ -73,7 +75,7 @@ export const Formulario = ()=>{
             await HelpPostActividad('http://localhost:3001/activity', actividad)
             
             setActividadEnviada(teclearPais.dificultad)
-
+             alert('Actividad Creada')
             setteclearPais({
                 name: "",
                 dificultad: "",
@@ -98,13 +100,17 @@ export const Formulario = ()=>{
     }, [actividadEnviada])
 
     let agregarPais = ()=>{
-
+      
+        if(teclearPais.pais === buscarPais.paisEncontrado[0]?.nombre){
         buscarPais.paisSeleccionado.push(teclearPais.pais)
         setteclearPais({
             ...teclearPais,
                 pais: ''
         })
-
+    }
+    else{
+        alert('Debes seleccionar un pais')
+    }
     }
 
     let eliminarPais = (p) => {
@@ -139,8 +145,9 @@ export const Formulario = ()=>{
                     <option  value="Invierno"> Invierno </option>
                     <option  value="Primavera"> Primavera </option>
                 </select>
+
                 <div>
-                    <input list="pais" type='text' placeholder='Pais donde se realiza' name='pais' value={teclearPais.pais} onChange={(evento) => cambios(evento)} />
+                    <input list="pais" type='text' placeholder='Pais donde se realiza' name='pais' value={teclearPais.pais} onChange={(evento) => cambios(evento)}/>
                     <input type='button' onClick={agregarPais} value='Agregar pais'/>
                 </div>
                 <datalist id="pais" >
