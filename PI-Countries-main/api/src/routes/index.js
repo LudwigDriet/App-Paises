@@ -1,11 +1,6 @@
 const { Router } = require("express");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 const axios = require("axios");
-
 const { Country, Actividad, coun_act } = require("../db");
-// const { Op } = require("sequelize");
-
 const router = Router();
 
 const getDataApi = async () => {
@@ -31,7 +26,7 @@ const getDataApi = async () => {
 };
 
 // Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+
 let cargada = false;
 
 router.get("/countries", async (req, res) => {
@@ -53,12 +48,6 @@ router.get("/countries", async (req, res) => {
     }
   } else {
     const buscarPais = await Country.findAll({
-      // where: {
-      //   nombre: {
-      //     [Op.ilike]: `%${name}%`,
-      //   },
-
-      // },
       include: { model: Actividad, through: { attributes: [] } },
     });
 
@@ -123,6 +112,7 @@ router.get("/az", async (req, res) => {
   });
   return res.status(200).send(az);
 });
+
 router.get("/za", async (req, res) => {
   let za = await Country.findAll({
     order: [["nombre", "DESC"]],
@@ -146,6 +136,7 @@ router.get("/poblacionmas", async (req, res) => {
 
   return res.status(200).send(poblacion);
 });
+
 router.get("/continente/:idContinente", async (req, res) => {
   let { idContinente } = req.params;
 
@@ -165,4 +156,6 @@ router.get("/actividadPorPais", async (req, res) => {
   let actividadPorPais = await coun_act.findAll();
   return res.status(200).send(actividadPorPais);
 });
+
+
 module.exports = router;
