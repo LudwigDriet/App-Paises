@@ -1,39 +1,33 @@
-.paises_contenedor{
-    
-    margin-left: 20px ;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    min-height: 75vh;
-    margin-top: 10px;
-    flex-wrap:wrap ;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+.paises_contenedor {
+  margin-left: 150px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  min-height: 75vh;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 20px rgba(12, 9, 9, 0.3),
+    0 0 100px rgba(15, 10, 10, 0.1) inset;
 }
 
-.botones_paginado{
-    
-    display: flex;
-    margin: 1%;
-    padding: 10px;
-    justify-content: center;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    
-    border: 1px solid rgb(222, 226, 230);
+.botones_paginado {
+  display: flex;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-left: 150px;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(12, 9, 9, 0.3),
+    0 0 100px rgba(15, 10, 10, 0.1) inset;
 }
 
-
-.boton_boton{
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid rgb(222, 226, 230);
-    transition: 0.5s;
-    
+.boton_boton {
+  padding: 10px;
+  margin: 5px;
+  background-color: rgb(218, 226, 236);
+  border: 1px solid rgb(122, 172, 248);
+  transition: 0.5s;
 }
 
-.boton_boton:hover{
-    cursor:pointer;
-    border: 1px solid rgb(113, 120, 128);
-
+.boton_boton:hover {
+  cursor: pointer;
+  border: 1px solid rgb(8, 89, 182);
 }
-
-

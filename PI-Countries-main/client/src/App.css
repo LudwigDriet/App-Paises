@@ -1,4 +1,6 @@
 .App {
+  width: 1600px;
+  height: 790px;
   text-align: center;
 }
 
@@ -36,7 +38,14 @@
     transform: rotate(360deg);
   }
 }
-.link{
+.link-letra {
   text-decoration: none;
   color: black;
-  }
+  font-size: 20px;
+}
+
+.link-div {
+  margin-left: 150px;
+  margin-right: 10px;
+  align-items: center;
+}

@@ -1,53 +1,54 @@
 .detalle_contenedor {
-    
-    
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 600px;
-    margin-top: 10px;
-    flex-wrap: wrap-reverse;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-.detalle_contenedorgeneral{
-    
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+  margin-left: 140px;
 }
 
-.detalle_bandera{
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+.detalle_contenedorgeneral {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.detalle_actividad{
-    margin-left: 20px ;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 320px;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+.detalle_bandera {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  box-shadow: 0 10px 20px rgba(12, 9, 9, 0.3),
+    10px 10px 100px rgba(15, 10, 10, 0.1) inset;
 }
 
-.detalle_contenedor_actividad{
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+.detalle_actividad {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 220px;
+  height: 220px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(12, 9, 9, 0.3),
+    10px 10px 100px rgba(15, 10, 10, 0.1) inset;
 }
 
-.detalle_boton{
-cursor: pointer;
-text-align: center;
-background-color: rgb(160, 200, 245);
-border: 1px solid transparent;
-padding: 10px;
-border-color: rgb(13, 110, 253)
+.detalle_contenedor_actividad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.detalle_boton {
+  cursor: pointer;
+  text-align: center;
+  background-color: rgb(218, 226, 236);
+  border: 1px solid transparent;
+  padding: 10px;
+  border-color: rgb(122, 172, 248);
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
