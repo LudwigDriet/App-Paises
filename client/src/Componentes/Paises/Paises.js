@@ -12,7 +12,7 @@ export const Paises = (props) => {
   let [paises, setPaises] = useState([]);
 
   const dispatch = useDispatch();
-  let URL = "/products/countries";
+  let URL = `/${REACT_APP_API}/countries`;
 
   useEffect(() => {
     dispatch(getPaises(URL));
