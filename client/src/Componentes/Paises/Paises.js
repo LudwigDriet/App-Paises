@@ -12,7 +12,7 @@ export const Paises = (props) => {
   let [paises, setPaises] = useState([]);
 
   const dispatch = useDispatch();
-  let URL = `/${REACT_APP_API}/countries`;
+  let URL = `/https://app-paises.herokuapp.com/countries`;
 
   useEffect(() => {
     dispatch(getPaises(URL));
