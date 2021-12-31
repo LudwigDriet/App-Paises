@@ -9,10 +9,10 @@ export const Buscador = () => {
   const dispatch = useDispatch();
   let [buscarPais, setbuscarPais] = useState("");
 
-  let URL = "http://localhost:3001/countries";
+  let URL = "/products/countries";
   useEffect(() => {
     if (buscarPais !== "") {
-      HelpGetPaises(`http://localhost:3001/countries?name=${buscarPais}`)
+      HelpGetPaises(`/products/countries?name=${buscarPais}`)
         .then((res) => dispatch(getPaisesFiltrados(res.data)))
         .catch(() => alert("Pais no encontrado"));
     } else {

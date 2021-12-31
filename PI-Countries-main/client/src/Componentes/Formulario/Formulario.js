@@ -20,7 +20,7 @@ export const Formulario = () => {
   useEffect(() => {
     if (teclearPais.pais !== "") {
       HelpGetPaises(
-        `http://localhost:3001/countries?name=${teclearPais.pais}`
+        `/products/countries?name=${teclearPais.pais}`
       ).then((res) =>
         setbuscarPais({
           ...buscarPais,
@@ -64,7 +64,7 @@ export const Formulario = () => {
         paises: buscarPais.paisSeleccionado,
       };
 
-      await HelpPostActividad("http://localhost:3001/activity", actividad);
+      await HelpPostActividad("/products/activity", actividad);
 
       setActividadEnviada(teclearPais.dificultad);
       alert("Actividad Creada");

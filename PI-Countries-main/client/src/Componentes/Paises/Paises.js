@@ -12,7 +12,7 @@ export const Paises = (props) => {
   let [paises, setPaises] = useState([]);
 
   const dispatch = useDispatch();
-  let URL = "http://localhost:3001/countries";
+  let URL = "/products/countries";
 
   useEffect(() => {
     dispatch(getPaises(URL));

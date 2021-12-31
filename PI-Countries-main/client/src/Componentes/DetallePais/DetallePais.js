@@ -10,7 +10,7 @@ export const DetallePais = () => {
 
   let [detallePais, setdetallePais] = useState([]);
   useEffect(() => {
-    HelpGetPaises(`http://localhost:3001/countries/${params.idPais}`).then(
+    HelpGetPaises(`/products/countries/${params.idPais}`).then(
       (res) => setdetallePais(res.data)
     );
   }, [params.idPais]);

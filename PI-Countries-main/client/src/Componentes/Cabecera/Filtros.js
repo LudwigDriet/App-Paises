@@ -11,7 +11,7 @@ export const Filtros = (props) => {
 
   let paisesReducer = useSelector((state) => state.paisesReducer);
   const dispatch = useDispatch();
-  let URL = "http://localhost:3001/countries";
+  let URL = "/products/countries";
 
   function handleClick(e) {
     e.preventDefault();
@@ -45,10 +45,10 @@ export const Filtros = (props) => {
   useEffect(() => {
     if (alfa !== "") {
       alfa === "A-Z"
-        ? HelpGetPaises("http://localhost:3001/az").then((res) => {
+        ? HelpGetPaises("/products/az").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           })
-        : HelpGetPaises("http://localhost:3001/za").then((res) => {
+        : HelpGetPaises("/products/za").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           });
     }
@@ -56,17 +56,17 @@ export const Filtros = (props) => {
 
     if (poblacion !== "") {
       poblacion === "Menor"
-        ? HelpGetPaises("http://localhost:3001/poblacionmenos").then((res) => {
+        ? HelpGetPaises("/products/poblacionmenos").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           })
-        : HelpGetPaises("http://localhost:3001/poblacionmas").then((res) => {
+        : HelpGetPaises("/products/poblacionmas").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           });
     }
     setpoblacion("");
 
     if (continente !== "") {
-      HelpGetPaises(`http://localhost:3001/continente/${continente}`).then(
+      HelpGetPaises(`/products/continente/${continente}`).then(
         (res) => {
           dispatch(getPaisesFiltrados(res.data));
         }
@@ -74,11 +74,11 @@ export const Filtros = (props) => {
     }
     setcontinente("");
 
-    HelpGetPaises("http://localhost:3001/actividades").then((res) => {
+    HelpGetPaises("/products/actividades").then((res) => {
       settraerActividad(res.data);
     });
     if (actividadPorPais !== "") {
-      HelpGetPaises("http://localhost:3001/actividadPorPais").then((res) =>
+      HelpGetPaises("/products/actividadPorPais").then((res) =>
         setactividadPorPais(res.data)
       );
     }
