@@ -20,7 +20,7 @@ export const Formulario = () => {
   useEffect(() => {
     if (teclearPais.pais !== "") {
       HelpGetPaises(
-        `/products/countries?name=${teclearPais.pais}`
+        `/https://app-paises.herokuapp.com/countries?name=${teclearPais.pais}`
       ).then((res) =>
         setbuscarPais({
           ...buscarPais,
@@ -64,7 +64,7 @@ export const Formulario = () => {
         paises: buscarPais.paisSeleccionado,
       };
 
-      await HelpPostActividad("/products/activity", actividad);
+      await HelpPostActividad("/https://app-paises.herokuapp.com/activity", actividad);
 
       setActividadEnviada(teclearPais.dificultad);
       alert("Actividad Creada");

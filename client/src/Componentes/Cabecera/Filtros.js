@@ -11,7 +11,7 @@ export const Filtros = (props) => {
 
   let paisesReducer = useSelector((state) => state.paisesReducer);
   const dispatch = useDispatch();
-  let URL = "/products/countries";
+  let URL = "/https://app-paises.herokuapp.com/countries";
 
   function handleClick(e) {
     e.preventDefault();
@@ -45,10 +45,10 @@ export const Filtros = (props) => {
   useEffect(() => {
     if (alfa !== "") {
       alfa === "A-Z"
-        ? HelpGetPaises("/products/az").then((res) => {
+        ? HelpGetPaises("/https://app-paises.herokuapp.com/az").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           })
-        : HelpGetPaises("/products/za").then((res) => {
+        : HelpGetPaises("/https://app-paises.herokuapp.com/za").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           });
     }
@@ -56,17 +56,17 @@ export const Filtros = (props) => {
 
     if (poblacion !== "") {
       poblacion === "Menor"
-        ? HelpGetPaises("/products/poblacionmenos").then((res) => {
+        ? HelpGetPaises("/https://app-paises.herokuapp.com/poblacionmenos").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           })
-        : HelpGetPaises("/products/poblacionmas").then((res) => {
+        : HelpGetPaises("/https://app-paises.herokuapp.com/poblacionmas").then((res) => {
             dispatch(getPaisesFiltrados(res.data));
           });
     }
     setpoblacion("");
 
     if (continente !== "") {
-      HelpGetPaises(`/products/continente/${continente}`).then(
+      HelpGetPaises(`/https://app-paises.herokuapp.com/continente/${continente}`).then(
         (res) => {
           dispatch(getPaisesFiltrados(res.data));
         }
@@ -74,11 +74,11 @@ export const Filtros = (props) => {
     }
     setcontinente("");
 
-    HelpGetPaises("/products/actividades").then((res) => {
+    HelpGetPaises("/https://app-paises.herokuapp.com/actividades").then((res) => {
       settraerActividad(res.data);
     });
     if (actividadPorPais !== "") {
-      HelpGetPaises("/products/actividadPorPais").then((res) =>
+      HelpGetPaises("/https://app-paises.herokuapp.com/actividadPorPais").then((res) =>
         setactividadPorPais(res.data)
       );
     }

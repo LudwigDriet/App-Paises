@@ -10,7 +10,7 @@ export const DetallePais = () => {
 
   let [detallePais, setdetallePais] = useState([]);
   useEffect(() => {
-    HelpGetPaises(`/products/countries/${params.idPais}`).then(
+    HelpGetPaises(`/https://app-paises.herokuapp.com/countries/${params.idPais}`).then(
       (res) => setdetallePais(res.data)
     );
   }, [params.idPais]);
