@@ -9,10 +9,10 @@ export const Buscador = () => {
   const dispatch = useDispatch();
   let [buscarPais, setbuscarPais] = useState("");
 
-  let URL = "/https://app-paises.herokuapp.com/countries";
+  let URL = "https://app-paises.herokuapp.com/countries";
   useEffect(() => {
     if (buscarPais !== "") {
-      HelpGetPaises(`/https://app-paises.herokuapp.com/countries?name=${buscarPais}`)
+      HelpGetPaises(`https://app-paises.herokuapp.com/countries?name=${buscarPais}`)
         .then((res) => dispatch(getPaisesFiltrados(res.data)))
         .catch(() => alert("Pais no encontrado"));
     } else {
