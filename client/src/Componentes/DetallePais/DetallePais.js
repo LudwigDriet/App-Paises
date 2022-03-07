@@ -16,6 +16,7 @@ export const DetallePais = () => {
   }, [params.idPais]);
 
   return (
+    <div className="contenedor">
     <div className="detalle_contenedorgeneral">
       <div className="detalle_contenedor">
         <div className="detalle_bandera">
@@ -62,6 +63,7 @@ export const DetallePais = () => {
         </div>
         <div></div>
       </div>
+    </div>
     </div>
   );
 };

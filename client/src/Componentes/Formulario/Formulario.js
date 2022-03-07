@@ -114,6 +114,7 @@ export const Formulario = () => {
   };
 
   return (
+    <div className="contenedor">
     <div className="formulario_caja">
       <form className="formulario_contenedor" onSubmit={envioFormulario}>
         <input
@@ -222,6 +223,7 @@ export const Formulario = () => {
         </div>
         <button className="boton_formulario">Crear</button>
       </form>
+    </div>
     </div>
   );
 };

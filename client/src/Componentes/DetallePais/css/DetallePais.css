@@ -1,9 +1,16 @@
+.contenedor{
+  min-height: 88vh;
+  min-width: 100%;
+  display: block;
+  margin: 0 auto;
+  }
+
 .detalle_contenedor {
   width: 50%;
   display: flex;
   justify-content: center;
   min-height: 300px;
-  margin-left: 140px;
+  /* margin-left: 140px; */
 }
 
 .detalle_contenedorgeneral {

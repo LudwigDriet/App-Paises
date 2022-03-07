@@ -2,13 +2,15 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  width: 1600px;
-  height: 792px;
+  max-width: 100%;
+  min-height: 100vh;
   background-image: url(../../../imagenes/tierra3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: center center; */
   background-color: black;
-
-  padding-left: 145px;
-  padding-top: 60px;
+  /* padding-left: 145px; */
+  /* padding-top: 60px; */
 }
 
 .boton_inicio {
@@ -17,12 +19,16 @@
   box-shadow: 0 10px 20px rgba(95, 82, 82, 0.3),
     0 0 100px rgba(95, 82, 82, 0.1) inset;
   border-radius: 50%;
-  width: 705px;
-  height: 710px;
+  width: 120%;
+  height: 760px;
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   transition: 0.3s;
   text-decoration: none;
+  position: relative;
+  top: 7%;
+  right: 5%;
 }
 
 .boton_inicio:hover {

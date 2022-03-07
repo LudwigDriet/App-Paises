@@ -1,3 +1,9 @@
+.contenedor{
+min-height: 88vh;
+min-width: 100%;
+display: block;
+margin: 0 auto;
+}
 .formulario_contenedor {
   justify-content: space-evenly;
   display: flex;

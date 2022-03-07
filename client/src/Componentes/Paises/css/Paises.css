@@ -1,6 +1,6 @@
 .paises_contenedor {
-  margin-left: 150px;
-  margin-right: 10px;
+  /* margin-left: 150px;
+  margin-right: 10px; */
   display: flex;
   justify-content: center;
   min-height: 75vh;
@@ -11,9 +11,9 @@
 
 .botones_paginado {
   display: flex;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   margin-top: 5px;
-  margin-left: 150px;
+  /* margin-left: 150px; */
   justify-content: center;
   box-shadow: 0 10px 20px rgba(12, 9, 9, 0.3),
     0 0 100px rgba(15, 10, 10, 0.1) inset;
